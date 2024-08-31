@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo-header
+  labels:
+    app: echo-header
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo-header
+  template:
+    metadata:
+      labels:
+        app: echo-header
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      serviceAccountName: echo-header
+      containers:
+      - name: echo-header 
+        image: 373797717611.dkr.ecr.eu-west-2.amazonaws.com/dev-arch-testing:placeholder
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8090
+        securityContext:
+          runAsUser: 1000
+        resources:
+          limits:
+            memory: 128M
+          requests:
+            cpu: 100m
+            memory: 128M
