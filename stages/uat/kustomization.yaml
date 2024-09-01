@@ -6,4 +6,4 @@ resources:
 - configmap.yaml
 images:
 - name: 373797717611.dkr.ecr.eu-west-2.amazonaws.com/dev-arch-testing
-  newTag: v5
+  newTag: v6
